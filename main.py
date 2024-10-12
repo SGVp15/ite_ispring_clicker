@@ -62,7 +62,7 @@ def click_num(num):
         pyautogui.hotkey('down')
 
 
-def main(path, name_window):
+def main(path, window_name):
     categories_list, files, num_list, max_num_list = read_txt_file(path)
 
     for i, category in enumerate(categories_list):
@@ -71,8 +71,8 @@ def main(path, name_window):
         file = files[i]
         num = num_list[i]
         max_num = max_num_list[i]
-        if wait_windows(name_window, time_second=99999):
-            click_ispring_import(file, name_window)
+        if wait_windows(window_name, time_second=99999):
+            click_ispring_import(file, window_name)
         else:
             return False
 
