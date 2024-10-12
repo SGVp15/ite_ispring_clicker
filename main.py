@@ -13,11 +13,11 @@ from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS, ISPRINGQUIZM
 def click_ispring_import(file, base_window):
     while wait_windows('Откр', time_second=1) is False:
         if wait_windows(base_window, time_second=99999):
-            time.sleep(PAUSE_SEC)
+            # time.sleep(PAUSE_SEC)
             pyautogui.hotkey('alt')
-            time.sleep(PAUSE_SEC)
+            # time.sleep(PAUSE_SEC)
             pyautogui.hotkey('m')
-            time.sleep(PAUSE_SEC)
+            # time.sleep(PAUSE_SEC)
             pyautogui.hotkey('j')
             time.sleep(1)
     pyautogui.write(file)
@@ -79,10 +79,12 @@ def wait_windows(name_like: str, time_second=5):
         if n > max_sec:
             print('Time')
             break
-        time.sleep(0.1)
-        n += 1
+
         if re.search(name_like, pg.getActiveWindow().title):
             return True
+
+        time.sleep(0.1)
+        n += 1
         for windows in pg.getAllTitles():
             if re.search(name_like, windows):
                 is_win_activate = True
@@ -109,7 +111,7 @@ if __name__ == '__main__':
             if main(full_path, name_window):
                 file_path_txt = os.path.join(full_path, INFO_TICKET_IMPORT)
                 subprocess.Popen(["notepad", file_path_txt])
-                time.sleep(2)
+                # time.sleep(1)
 
 # ['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&', "'", '(',
 # ')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7',
