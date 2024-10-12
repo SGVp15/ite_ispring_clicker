@@ -5,7 +5,7 @@ PAUSE_SEC = 0.3
 BASE_PATH = os.path.join('C:\\', 'Users', 'user', 'Documents', 'Exams')
 
 EXAMS = (
-    'RCVC',
+    # 'RCVC',
 
 
 
@@ -20,7 +20,7 @@ EXAMS = (
     # 'CPIC',
     # 'OPSC',
     # 'SOA4C',
-    # 'BAFC',
+    'BAFC',
 )
 
 
