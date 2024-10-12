@@ -48,8 +48,8 @@ def main(path):
         click_ispring_import(files[i])
         time.sleep(PAUSE_SEC)
         pyperclip.copy(category)
-        for _ in range(5):
-            pyautogui.hotkey('tab')
+        for _ in range(2):
+            pyautogui.hotkey('shift','tab')
             time.sleep(PAUSE_SEC)
         pyautogui.hotkey('ctrl', 'v')
         time.sleep(PAUSE_SEC)
