@@ -51,12 +51,7 @@ def click_property():
 
 
 def click_num(num):
-    pyautogui.hotkey('tab')
-    time.sleep(PAUSE_SEC)
-    pyautogui.hotkey('tab')
-    time.sleep(PAUSE_SEC)
-    pyautogui.hotkey('down')
-    time.sleep(PAUSE_SEC)
+    pyautogui.click(1600,299)
     pyautogui.hotkey('tab')
     for n in range(num + 1):
         pyautogui.hotkey('down')
