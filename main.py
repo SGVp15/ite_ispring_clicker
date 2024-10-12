@@ -13,7 +13,8 @@ from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS
 def click_ispring_import(file):
     while wait_windows('Откр', time_second=9999) is False:
         time.sleep(PAUSE_SEC)
-        pyautogui.hotkey('alt')
+        pyautogui.press('alt')
+        # pyautogui.keyDown('alt')
         time.sleep(PAUSE_SEC)
         pyautogui.hotkey('m')
         time.sleep(PAUSE_SEC)
@@ -85,6 +86,7 @@ if __name__ == '__main__':
                    os.path.isdir(os.path.join(os.path.join(BASE_PATH, exam), f))]
         for num in folders:
             full_path = os.path.join(BASE_PATH, exam, num)
+            subprocess.run(os.path.join(BASE_PATH, exam, f'{exam}_{num}.quiz'))
             wait_windows(f'{exam}_{num} - iSpring QuizMaker', time_second=999999999)
             main(full_path)
 
