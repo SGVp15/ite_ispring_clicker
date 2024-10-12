@@ -85,13 +85,16 @@ if __name__ == '__main__':
                    os.path.isdir(os.path.join(os.path.join(BASE_PATH, exam), f))]
         for num in folders:
             full_path = os.path.join(BASE_PATH, exam, num)
-            # subprocess.run([ISPRINGQUIZMAKER_PATH, os.path.join(BASE_PATH, exam, f'{exam}_{num}.quiz')])
+            subprocess.Popen([ISPRINGQUIZMAKER_PATH, os.path.join(BASE_PATH, exam, f'{exam}_{num}.quiz')],
+                           creationflags=subprocess.CREATE_NEW_CONSOLE)
             name_windows = f'{exam}_{num} - iSpring QuizMaker'
             if wait_windows(name_windows, time_second=999999999):
+                time.sleep(1)
                 main(full_path)
 
                 file_path_txt = os.path.join(full_path, INFO_TICKET_IMPORT)
                 subprocess.Popen(["notepad", file_path_txt])
+                time.sleep(2)
 
 # ['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&', "'", '(',
 # ')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7',
