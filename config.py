@@ -5,16 +5,16 @@ PAUSE_SEC = 0.3
 BASE_PATH = os.path.join('C:\\', 'Users', 'user', 'Documents', 'Exams')
 
 EXAMS = (
-    'BASRMC',
-    'Cobit2019C',
-    'ICSC',
-    'ITIL4FC',
     'RCVC',
 
 
-    'RISKC',
-    'SYSAC',
 
+    # 'BASRMC',
+    # 'Cobit2019C',
+    # 'ICSC',
+    # 'ITIL4FC',
+    # 'RISKC',
+    # 'SYSAC',
     # 'ITHRC',
     # 'ITAMC',
     # 'CPIC',
