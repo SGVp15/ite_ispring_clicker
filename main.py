@@ -84,6 +84,7 @@ def main(path, name_window):
         time.sleep(PAUSE_SEC)
         pyautogui.hotkey('enter')
         time.sleep(PAUSE_SEC)
+
         if num != max_num:
             click_num(num)
 
