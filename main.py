@@ -58,7 +58,7 @@ def click_num(num):
         pyautogui.hotkey(str(des))
         pyautogui.hotkey(str(des))
 
-    for n in range(num % 10 + 1):
+    for n in range(num % 10):
         pyautogui.hotkey('down')
 
 
