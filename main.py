@@ -7,9 +7,11 @@ import pygetwindow as pg
 import pyperclip
 import subprocess
 
+from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS
+
 
 def click_ispring_import(file):
-    while wait_windows('Откр', time_second=1) is False:
+    while wait_windows('Откр', time_second=9999) is False:
         time.sleep(PAUSE_SEC)
         pyautogui.hotkey('alt')
         time.sleep(PAUSE_SEC)
@@ -77,27 +79,8 @@ def wait_windows(name_like: str, time_second=10):
     return False
 
 
-BASE_PATH = os.path.join('C:\\', 'Users', 'user', 'Documents', 'Exams')
-PAUSE_SEC = 0.2
-INFO_TICKET_IMPORT = 'info_ticket_import.txt'
-
 if __name__ == '__main__':
-    for exam in (
-            'BAFC',
-            # 'BASRMC',
-            # 'CPIC',
-            # 'Cobit2019С',
-            # 'ICSC',
-            # 'ITAMC',
-            # 'ITHRC',
-            # 'ITIL4FC',
-            # 'OPSC',
-            # 'RCVC',
-            # 'RISKC',
-            # 'SOA4C',
-            # 'SYSAC',
-    ):
-
+    for exam in EXAMS:
         folders = [f for f in os.listdir(os.path.join(BASE_PATH, exam)) if
                    os.path.isdir(os.path.join(os.path.join(BASE_PATH, exam), f))]
         for num in folders:
