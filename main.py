@@ -58,7 +58,7 @@ def click_num(num):
     pyautogui.hotkey('down')
     time.sleep(PAUSE_SEC)
     pyautogui.hotkey('tab')
-    for n in range(num):
+    for n in range(num + 1):
         pyautogui.hotkey('down')
 
 
