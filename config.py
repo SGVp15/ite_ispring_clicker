@@ -11,10 +11,10 @@ EXAMS = (
     'ITIL4FC',
     'RCVC',
 
-    #
-    # 'RISKC',
-    # 'SYSAC',
-    #
+
+    'RISKC',
+    'SYSAC',
+
     # 'ITHRC',
     # 'ITAMC',
     # 'CPIC',
