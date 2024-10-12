@@ -85,13 +85,13 @@ if __name__ == '__main__':
                    os.path.isdir(os.path.join(os.path.join(BASE_PATH, exam), f))]
         for num in folders:
             full_path = os.path.join(BASE_PATH, exam, num)
-            # subprocess.run(["C:/Program Files/iSpring/Suite 11/bin32/ispringquizmaker.exe",
-            #                 os.path.join(BASE_PATH, exam, f'{exam}_{num}.quiz')])
-            wait_windows(f'{exam}_{num} - iSpring QuizMaker', time_second=999999999)
-            main(full_path)
+            subprocess.run(["C:/Program Files/iSpring/Suite 11/bin32/ispringquizmaker.exe",
+                            os.path.join(BASE_PATH, exam, f'{exam}_{num}.quiz')])
+            if wait_windows(f'{exam}_{num} - iSpring QuizMaker', time_second=999999999):
+                main(full_path)
 
-            file_path_txt = os.path.join(full_path, INFO_TICKET_IMPORT)
-            subprocess.Popen(["notepad", file_path_txt])
+                file_path_txt = os.path.join(full_path, INFO_TICKET_IMPORT)
+                subprocess.Popen(["notepad", file_path_txt])
 
 # ['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&', "'", '(',
 # ')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7',
