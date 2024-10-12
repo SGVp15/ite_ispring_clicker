@@ -27,8 +27,9 @@ def click_ispring_import(file):
 def read_txt_file(path) -> ([], []):
     with open(os.path.join(path, INFO_TICKET_IMPORT), 'r', encoding='utf-8') as f:
         s = f.read()
+
     categories_list = []
-    for category in re.findall(r'(\d{2}\.[ А-Яа-я\w-]+)\t', s):
+    for category in re.findall(r'(\d{2}\.[^\t]+)\t', s):
         categories_list.append(re.sub(r'\. *', '. ', category).strip())
     files = [os.path.join(path, f'{n[:2]}.xlsx') for n in categories_list]
     return categories_list, files
