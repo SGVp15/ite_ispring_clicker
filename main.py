@@ -72,8 +72,7 @@ def main(path, window_name):
         num = num_list[i]
         max_num = max_num_list[i]
         if wait_windows(window_name, time_second=99999):
-            pyautogui.hotkey('win','up')
-            time.sleep(0.1)
+
             click_ispring_import(file, window_name)
         else:
             return False
@@ -93,6 +92,8 @@ def main(path, window_name):
         time.sleep(PAUSE_SEC)
 
         if num != max_num:
+            pyautogui.hotkey('win', 'up')
+            time.sleep(0.1)
             click_num(num)
 
     click_property()
