@@ -13,8 +13,7 @@ from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS
 def click_ispring_import(file):
     while wait_windows('Откр', time_second=9999) is False:
         time.sleep(PAUSE_SEC)
-        pyautogui.press('alt')
-        # pyautogui.keyDown('alt')
+        pyautogui.hotkey('alt')
         time.sleep(PAUSE_SEC)
         pyautogui.hotkey('m')
         time.sleep(PAUSE_SEC)
@@ -93,7 +92,6 @@ if __name__ == '__main__':
 
             file_path_txt = os.path.join(full_path, INFO_TICKET_IMPORT)
             subprocess.Popen(["notepad", file_path_txt])
-            wait_windows("notepad", time_second=2)
 
 # ['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&', "'", '(',
 # ')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7',
