@@ -81,6 +81,8 @@ def wait_windows(name_like: str, time_second=5):
             break
         time.sleep(0.1)
         n += 1
+        if re.search(name_like, pg.getActiveWindow().title):
+            return True
         for windows in pg.getAllTitles():
             if re.search(name_like, windows):
                 is_win_activate = True
