@@ -42,15 +42,21 @@ def click_property():
     pyautogui.hotkey('b')
 
 
-def main(path):
+def main(path, name_window):
     categories_list, files = read_txt_file(path)
+
     for i, category in enumerate(categories_list):
-        click_ispring_import(files[i])
+
+        if wait_windows(name_window, time_second=99999):
+            click_ispring_import(files[i])
+        else:
+            return False
+
         time.sleep(PAUSE_SEC)
         pyperclip.copy(category)
         for _ in range(2):
-            pyautogui.hotkey('shift','tab')
-            time.sleep(PAUSE_SEC)
+            pyautogui.hotkey('shift', 'tab')
+            time.sleep(0.1)
         pyautogui.hotkey('ctrl', 'v')
         time.sleep(PAUSE_SEC)
 
@@ -60,6 +66,7 @@ def main(path):
         pyautogui.hotkey('enter')
         time.sleep(PAUSE_SEC)
     click_property()
+    return True
 
 
 def wait_windows(name_like: str, time_second=5):
@@ -92,12 +99,10 @@ if __name__ == '__main__':
         for num in folders:
             full_path = os.path.join(BASE_PATH, exam, num)
             subprocess.Popen([ISPRINGQUIZMAKER_PATH, os.path.join(BASE_PATH, exam, f'{exam}_{num}.quiz')],
-                           creationflags=subprocess.CREATE_NEW_CONSOLE)
-            name_windows = f'{exam}_{num} - iSpring QuizMaker'
-            if wait_windows(name_windows, time_second=999999999):
-                time.sleep(1)
-                main(full_path)
+                             creationflags=subprocess.CREATE_NEW_CONSOLE)
+            name_window = f'{exam}_{num} - iSpring QuizMaker'
 
+            if main(full_path, name_window):
                 file_path_txt = os.path.join(full_path, INFO_TICKET_IMPORT)
                 subprocess.Popen(["notepad", file_path_txt])
                 time.sleep(2)
