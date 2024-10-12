@@ -50,7 +50,7 @@ def main(path, name_window):
     for i, category in enumerate(categories_list):
 
         if wait_windows(name_window, time_second=99999):
-            click_ispring_import(files[i])
+            click_ispring_import(files[i], name_window)
         else:
             return False
 
