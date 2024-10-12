@@ -6,9 +6,9 @@ BASE_PATH = os.path.join('C:\\', 'Users', 'user', 'Documents', 'Exams')
 
 EXAMS = (
     # 'BAFC',
-    'BASRMC',
-    'CPIC',
-    'Cobit2019С',
+    # 'BASRMC',
+    # 'CPIC',
+    'Cobit2019C',
     'ICSC',
     'ITAMC',
     'ITHRC',
