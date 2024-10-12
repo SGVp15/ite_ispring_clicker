@@ -53,8 +53,7 @@ def click_property():
 def click_num(num):
     pyautogui.click(1600, 299)
     pyautogui.hotkey('tab')
-    if num > 9:
-        des = num // 10
+    des = num // 10
     if des > 0:
         pyautogui.hotkey(str(des))
         pyautogui.hotkey(str(des))
