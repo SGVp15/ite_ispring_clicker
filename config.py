@@ -19,3 +19,6 @@ EXAMS = (
     # 'SOA4C',
     # 'SYSAC',
 )
+
+
+ISPRINGQUIZMAKER_PATH= "C:/Program Files/iSpring/Suite 11/bin32/ispringquizmaker.exe"

@@ -7,11 +7,11 @@ import pygetwindow as pg
 import pyperclip
 import subprocess
 
-from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS
+from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS, ISPRINGQUIZMAKER_PATH
 
 
 def click_ispring_import(file):
-    while wait_windows('Откр',time_second=1) is False:
+    while wait_windows('Откр', time_second=1) is False:
         time.sleep(PAUSE_SEC)
         pyautogui.hotkey('alt')
         time.sleep(PAUSE_SEC)
@@ -85,9 +85,9 @@ if __name__ == '__main__':
                    os.path.isdir(os.path.join(os.path.join(BASE_PATH, exam), f))]
         for num in folders:
             full_path = os.path.join(BASE_PATH, exam, num)
-            subprocess.run(["C:/Program Files/iSpring/Suite 11/bin32/ispringquizmaker.exe",
-                            os.path.join(BASE_PATH, exam, f'{exam}_{num}.quiz')])
-            if wait_windows(f'{exam}_{num} - iSpring QuizMaker', time_second=999999999):
+            subprocess.run([ISPRINGQUIZMAKER_PATH, os.path.join(BASE_PATH, exam, f'{exam}_{num}.quiz')])
+            name_windows = f'{exam}_{num} - iSpring QuizMaker'
+            if wait_windows(name_windows, time_second=999999999):
                 main(full_path)
 
                 file_path_txt = os.path.join(full_path, INFO_TICKET_IMPORT)
