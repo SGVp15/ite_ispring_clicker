@@ -10,15 +10,16 @@ import subprocess
 from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS, ISPRINGQUIZMAKER_PATH
 
 
-def click_ispring_import(file):
+def click_ispring_import(file, base_window):
     while wait_windows('Откр', time_second=1) is False:
-        time.sleep(PAUSE_SEC)
-        pyautogui.hotkey('alt')
-        time.sleep(PAUSE_SEC)
-        pyautogui.hotkey('m')
-        time.sleep(PAUSE_SEC)
-        pyautogui.hotkey('j')
-        time.sleep(1)
+        if wait_windows(base_window, time_second=99999):
+            time.sleep(PAUSE_SEC)
+            pyautogui.hotkey('alt')
+            time.sleep(PAUSE_SEC)
+            pyautogui.hotkey('m')
+            time.sleep(PAUSE_SEC)
+            pyautogui.hotkey('j')
+            time.sleep(1)
     pyautogui.write(file)
     time.sleep(PAUSE_SEC)
     pyautogui.hotkey('enter')
