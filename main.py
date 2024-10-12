@@ -27,28 +27,52 @@ def read_txt_file(path) -> ([], []):
     with open(os.path.join(path, INFO_TICKET_IMPORT), 'r', encoding='utf-8') as f:
         s = f.read()
 
+    rows = s.split('\n')
     categories_list = []
-    for category in re.findall(r'(\d{2}\.[^\t]+)\t', s):
-        categories_list.append(re.sub(r'\. *', '. ', category).strip())
+    max_num_list = []
+    num_list = []
+    for row in rows:
+        list_word = row.split('\t')
+        if len(list_word) < 2:
+            continue
+        list_word = [x for x in list_word if x not in (None, '')]
+        categories_list.append(list_word[0])
+        num_list.append(int(list_word[1]))
+        max_num_list.append(int(list_word[2]))
+
     files = [os.path.join(path, f'{n[:2]}.xlsx') for n in categories_list]
-    return categories_list, files
+    return categories_list, files, num_list, max_num_list
 
 
 def click_property():
     pyautogui.hotkey('alt')
-    time.sleep(PAUSE_SEC)
     pyautogui.hotkey('m')
-    time.sleep(PAUSE_SEC)
     pyautogui.hotkey('b')
 
 
+def click_num(num):
+    pyautogui.hotkey('tab')
+    time.sleep(PAUSE_SEC)
+    pyautogui.hotkey('tab')
+    time.sleep(PAUSE_SEC)
+    pyautogui.hotkey('down')
+    time.sleep(PAUSE_SEC)
+    pyautogui.hotkey('tab')
+    for n in num:
+        pyautogui.hotkey('down')
+
+
 def main(path, name_window):
-    categories_list, files = read_txt_file(path)
+    categories_list, files, num_list, max_num_list = read_txt_file(path)
 
     for i, category in enumerate(categories_list):
 
+        category = categories_list[i]
+        file = files[i]
+        num = num_list[i]
+        max_num = max_num_list[i]
         if wait_windows(name_window, time_second=99999):
-            click_ispring_import(files[i], name_window)
+            click_ispring_import(file, name_window)
         else:
             return False
 
@@ -65,6 +89,9 @@ def main(path, name_window):
         time.sleep(PAUSE_SEC)
         pyautogui.hotkey('enter')
         time.sleep(PAUSE_SEC)
+        if num != max_num:
+            click_num(num)
+
     click_property()
     return True
 
