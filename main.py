@@ -85,7 +85,7 @@ if __name__ == '__main__':
                    os.path.isdir(os.path.join(os.path.join(BASE_PATH, exam), f))]
         for num in folders:
             full_path = os.path.join(BASE_PATH, exam, num)
-            subprocess.run([ISPRINGQUIZMAKER_PATH, os.path.join(BASE_PATH, exam, f'{exam}_{num}.quiz')])
+            # subprocess.run([ISPRINGQUIZMAKER_PATH, os.path.join(BASE_PATH, exam, f'{exam}_{num}.quiz')])
             name_windows = f'{exam}_{num} - iSpring QuizMaker'
             if wait_windows(name_windows, time_second=999999999):
                 main(full_path)
