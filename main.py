@@ -50,6 +50,7 @@ def main(path):
         pyperclip.copy(category)
         for _ in range(6):
             pyautogui.hotkey('tab')
+            time.sleep(PAUSE_SEC)
         pyautogui.hotkey('ctrl', 'v')
         time.sleep(PAUSE_SEC)
 
