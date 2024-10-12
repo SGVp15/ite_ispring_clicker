@@ -11,7 +11,7 @@ from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS
 
 
 def click_ispring_import(file):
-    while wait_windows('Откр',time_second=9999) is False:
+    while wait_windows('Откр',time_second=1) is False:
         time.sleep(PAUSE_SEC)
         pyautogui.hotkey('alt')
         time.sleep(PAUSE_SEC)
