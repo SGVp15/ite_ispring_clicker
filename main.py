@@ -46,6 +46,7 @@ def main(path):
     categories_list, files = read_txt_file(path)
     for i, category in enumerate(categories_list):
         click_ispring_import(files[i])
+        time.sleep(PAUSE_SEC)
         pyperclip.copy(category)
         for _ in range(6):
             pyautogui.hotkey('tab')
@@ -53,7 +54,8 @@ def main(path):
         time.sleep(PAUSE_SEC)
 
         pyautogui.hotkey('enter')
-        wait_windows('Результат импорта')
+        wait_windows('Результат импорта', time_second=999)
+        time.sleep(PAUSE_SEC)
         pyautogui.hotkey('enter')
         time.sleep(PAUSE_SEC)
     click_property()
