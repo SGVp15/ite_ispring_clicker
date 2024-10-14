@@ -83,10 +83,11 @@ def run_clicker(path, base_window):
     for _ in range(3):
         keyboard.press_and_release('tab')
         time.sleep(PAUSE_SEC * 2)
-    keyboard.press_and_release('space')
-    time.sleep(PAUSE_SEC * 2)
-    keyboard.press_and_release('tab')
-    time.sleep(PAUSE_SEC * 2)
+    for _ in range(len(categories_list)):
+        keyboard.press_and_release('space')
+        time.sleep(PAUSE_SEC * 2)
+        keyboard.press_and_release('tab')
+        time.sleep(PAUSE_SEC * 2)
 
     time.sleep(1)
     pyautogui.click(900, 900)
