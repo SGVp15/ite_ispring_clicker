@@ -3,6 +3,7 @@ import subprocess
 import time
 
 import keyboard
+import pyautogui
 
 from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS, ISPRINGQUIZMAKER_PATH, \
     WINDOW_NAME_IMPORT_FROM_EXCEL, WINDOW_NAME_RESULT_IMPORT_FROM_EXCEL
@@ -31,7 +32,7 @@ def read_txt_file(path) -> ([], []):
     return categories_list, files, num_list, max_num_list
 
 
-def main(path, window_name):
+def run_clicker(path, window_name):
     categories_list, files, num_list, max_num_list = read_txt_file(path)
 
     for i, category in enumerate(categories_list):
@@ -61,6 +62,12 @@ def main(path, window_name):
             click_num(num)
 
     click_property(window_name)
+    pyautogui.click(510, 256)
+    for _ in range(3):
+        keyboard.press_and_release('tab')
+    for _ in range(len(categories_list)):
+        keyboard.press_and_release('space')
+        keyboard.press_and_release('tab')
     return True
 
 
@@ -74,6 +81,6 @@ if __name__ == '__main__':
                              creationflags=subprocess.CREATE_NEW_CONSOLE)
             name_window = f'{exam}_{num} - iSpring QuizMaker'
 
-            if main(full_path, name_window):
+            if run_clicker(full_path, name_window):
                 file_path_txt = os.path.join(full_path, INFO_TICKET_IMPORT)
                 subprocess.Popen(["notepad", file_path_txt])

@@ -26,3 +26,4 @@ ISPRINGQUIZMAKER_PATH = "C:/Program Files/iSpring/Suite 11/bin32/ispringquizmake
 WINDOW_NAME_IMPORT_FROM_EXCEL = 'Импорт из Microsoft Excel'
 WINDOW_NAME_RESULT_IMPORT_FROM_EXCEL = 'Результат импорта'
 WINDOW_NAME_OPEN = 'Откр'
+WINDOW_NAME_PROPERTY = 'Свойства теста'
