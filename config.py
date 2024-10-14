@@ -17,7 +17,7 @@ EXAMS = (
 )
 
 INFO_TICKET_IMPORT = 'info_ticket_import.txt'
-PAUSE_SEC = 0.3
+PAUSE_SEC = 0.5
 BASE_PATH = os.path.join('C:\\', 'Users', 'user', 'Documents', 'Exams')
 
 ISPRINGQUIZMAKER_PATH = "C:/Program Files/iSpring/Suite 11/bin32/ispringquizmaker.exe"
