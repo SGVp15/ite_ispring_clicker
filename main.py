@@ -5,7 +5,7 @@ import time
 import keyboard
 
 from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS, ISPRINGQUIZMAKER_PATH
-from ispring import click_property, click_num, click_ispring_import
+from ispring import click_property, click_num, click_import
 from windows import wait_windows, full_scrin
 
 
@@ -38,8 +38,8 @@ def main(path, window_name):
         file = files[i]
         num = num_list[i]
         max_num = max_num_list[i]
-        if wait_windows(window_name, time_second=99999):
-            click_ispring_import(file, window_name)
+        if wait_windows(window_name, time_check_second=99999):
+            click_import(file, window_name)
         else:
             return False
 
@@ -51,7 +51,7 @@ def main(path, window_name):
         time.sleep(PAUSE_SEC)
         keyboard.press_and_release('enter')
 
-        wait_windows('Результат импорта', time_second=999)
+        wait_windows('Результат импорта', time_check_second=999)
         time.sleep(PAUSE_SEC)
         keyboard.press_and_release('enter')
         time.sleep(PAUSE_SEC)
@@ -61,7 +61,7 @@ def main(path, window_name):
             time.sleep(0.1)
             click_num(num)
 
-    click_property()
+    click_property(window_name)
     return True
 
 

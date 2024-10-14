@@ -5,9 +5,9 @@ import keyboard
 import pygetwindow as pg
 
 
-def wait_windows(name_like: str, time_second=5):
+def wait_windows(name_like: str, time_check_second=5):
     is_win_activate = False
-    max_sec = time_second * 10
+    max_sec = time_check_second * 10
     n = 0
     while is_win_activate is False:
         if n > max_sec:
