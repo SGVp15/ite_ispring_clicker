@@ -41,18 +41,18 @@ def run_clicker(path, base_window):
         num = num_list[i]
         max_num = max_num_list[i]
 
-        wait_windows(base_window)
-        time.sleep(PAUSE_SEC)
-        window_fullscrin()
-        click_property(base_window)
-        wait_windows(WINDOW_NAME_PROPERTY)
-        keyboard.press_and_release('esc')
-        time.sleep(PAUSE_SEC)
+        # wait_windows(base_window)
+        # time.sleep(PAUSE_SEC)
+        # window_fullscrin()
+        # click_property(base_window)
+        # wait_windows(WINDOW_NAME_PROPERTY)
+        # keyboard.press_and_release('esc')
+        # time.sleep(PAUSE_SEC)
 
-        wait_windows(base_window)
-        del_all_group()
-        time.sleep(PAUSE_SEC)
-        click_import(file, base_window)
+        # wait_windows(base_window)
+        # del_all_group()
+        # time.sleep(PAUSE_SEC)
+        # click_import(file, base_window)
 
         click_import(file, base_window)
         wait_windows(WINDOW_NAME_IMPORT_FROM_EXCEL, time_check_second=999)
