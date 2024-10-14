@@ -14,6 +14,13 @@ def click_property(base_window):
         keyboard.press_and_release('b')
 
 
+def click_export(base_window):
+    if wait_windows(base_window, time_check_second=99):
+        keyboard.press_and_release('alt')
+        keyboard.press_and_release('m')
+        keyboard.press_and_release('k')
+
+
 def click_num(num):
     pyautogui.click(1600, 299)
     keyboard.press_and_release('tab')
