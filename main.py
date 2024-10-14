@@ -1,26 +1,12 @@
 import os.path
-import re
 import subprocess
 import time
 
 import keyboard
-import pyautogui
-import pygetwindow as pg
 
 from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS, ISPRINGQUIZMAKER_PATH
-
-
-def click_ispring_import(file, base_window):
-    while True:
-        if wait_windows(base_window, time_second=99999):
-            keyboard.press_and_release('alt')
-            keyboard.press_and_release('m')
-            keyboard.press_and_release('j')
-            if wait_windows('Откр', time_second=2):
-                break
-    keyboard.write(file)
-    time.sleep(PAUSE_SEC)
-    keyboard.press_and_release('enter')
+from ispring import click_property, click_num, click_ispring_import
+from windows import wait_windows, full_scrin
 
 
 def read_txt_file(path) -> ([], []):
@@ -44,89 +30,39 @@ def read_txt_file(path) -> ([], []):
     return categories_list, files, num_list, max_num_list
 
 
-def click_property():
-    keyboard.press_and_release('alt')
-    keyboard.press_and_release('m')
-    keyboard.press_and_release('b')
-
-
-def click_num(num):
-    pyautogui.click(1600, 299)
-    keyboard.press_and_release('tab')
-    des = num // 10
-
-    keyboard.press_and_release(str(des))
-    keyboard.press_and_release(str(des))
-
-    for n in range(num % 10):
-        keyboard.press_and_release('down')
-
-
 def main(path, window_name):
     categories_list, files, num_list, max_num_list = read_txt_file(path)
 
     for i, category in enumerate(categories_list):
-
         category = categories_list[i]
         file = files[i]
         num = num_list[i]
         max_num = max_num_list[i]
         if wait_windows(window_name, time_second=99999):
-
             click_ispring_import(file, window_name)
         else:
             return False
 
         time.sleep(PAUSE_SEC)
-        # pyperclip.copy(category)
         for _ in range(2):
             keyboard.press_and_release('shift + tab')
-            time.sleep(0.1)
+            time.sleep(0.2)
         keyboard.write(category)
-        # keyboard.press_and_release('ctrl + v')
         time.sleep(PAUSE_SEC)
-
         keyboard.press_and_release('enter')
+
         wait_windows('Результат импорта', time_second=999)
         time.sleep(PAUSE_SEC)
         keyboard.press_and_release('enter')
         time.sleep(PAUSE_SEC)
 
         if num != max_num:
-            keyboard.press_and_release('win + up')
+            full_scrin()
             time.sleep(0.1)
             click_num(num)
 
     click_property()
     return True
-
-
-def wait_windows(name_like: str, time_second=5):
-    is_win_activate = False
-    max_sec = time_second * 10
-    n = 0
-    while is_win_activate is False:
-        if n > max_sec:
-            print('Time')
-            break
-        try:
-            if re.search(name_like, pg.getActiveWindow().title):
-                return True
-        except AttributeError:
-            pass
-        time.sleep(0.1)
-        n += 1
-        for windows in pg.getAllTitles():
-            if re.search(name_like, windows):
-                is_win_activate = True
-                try:
-                    pg.getWindowsWithTitle(windows)[0].activate()
-                except Exception:
-                    continue
-                time.sleep(0.3)
-                return True
-        print(f'Wait windows like [{name_like}]\t\t\t\t', end='\r')
-    return False
 
 
 if __name__ == '__main__':
