@@ -82,8 +82,8 @@ def run_clicker(path, window_name):
     keyboard.press_and_release('enter')
     time.sleep(PAUSE_SEC)
     keyboard.press_and_release('ctrl+s')
-    time.sleep(PAUSE_SEC)
-    click_export(WINDOW_NAME_EXPORT)
+    time.sleep(2)
+    click_export(window_name)
     return True
 
 
