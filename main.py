@@ -44,7 +44,10 @@ def run_clicker(path, window_name):
         wait_windows(window_name)
         window_fullscrin()
         time.sleep(PAUSE_SEC)
-        pyautogui.click(900, 900)
+        pyautogui.click(150, 340)
+        for _ in range(20):
+            keyboard.press_and_release('del')
+            time.sleep(0.2)
 
         click_import(file, window_name)
         wait_windows(WINDOW_NAME_IMPORT_FROM_EXCEL, time_check_second=999)
