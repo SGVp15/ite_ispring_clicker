@@ -1,7 +1,5 @@
 import os
 
-from docx2pdf import windows
-
 INFO_TICKET_IMPORT = 'info_ticket_import.txt'
 PAUSE_SEC = 0.3
 BASE_PATH = os.path.join('C:\\', 'Users', 'user', 'Documents', 'Exams')
