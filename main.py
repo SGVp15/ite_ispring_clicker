@@ -6,7 +6,6 @@ import time
 import keyboard
 import pyautogui
 import pygetwindow as pg
-import pyperclip
 
 from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS, ISPRINGQUIZMAKER_PATH
 
