@@ -47,8 +47,9 @@ def click_import(file, base_window):
             keyboard.press_and_release('alt')
             keyboard.press_and_release('m')
             keyboard.press_and_release('j')
-            if wait_windows(WINDOW_NAME_OPEN, time_check_second=2):
+            if wait_windows(WINDOW_NAME_OPEN, time_check_second=1):
                 break
+    time.sleep(PAUSE_SEC)
     keyboard.write(file)
     time.sleep(PAUSE_SEC)
     keyboard.press_and_release('enter')
