@@ -3,7 +3,7 @@ import time
 import keyboard
 import pyautogui
 
-from config import PAUSE_SEC
+from config import PAUSE_SEC, WINDOW_NAME_OPEN
 from windows import wait_windows
 
 
@@ -32,7 +32,7 @@ def click_import(file, base_window):
             keyboard.press_and_release('alt')
             keyboard.press_and_release('m')
             keyboard.press_and_release('j')
-            if wait_windows('Откр', time_check_second=2):
+            if wait_windows(WINDOW_NAME_OPEN, time_check_second=2):
                 break
     keyboard.write(file)
     time.sleep(PAUSE_SEC)

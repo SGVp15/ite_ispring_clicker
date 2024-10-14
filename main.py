@@ -4,9 +4,10 @@ import time
 
 import keyboard
 
-from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS, ISPRINGQUIZMAKER_PATH
+from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS, ISPRINGQUIZMAKER_PATH, \
+    WINDOW_NAME_IMPORT_FROM_EXCEL, WINDOW_NAME_RESULT_IMPORT_FROM_EXCEL
 from ispring import click_property, click_num, click_import
-from windows import wait_windows, full_scrin
+from windows import wait_windows, window_fullscrin
 
 
 def read_txt_file(path) -> ([], []):
@@ -38,10 +39,8 @@ def main(path, window_name):
         file = files[i]
         num = num_list[i]
         max_num = max_num_list[i]
-        if wait_windows(window_name, time_check_second=99999):
-            click_import(file, window_name)
-        else:
-            return False
+        click_import(file, window_name)
+        wait_windows(WINDOW_NAME_IMPORT_FROM_EXCEL, time_check_second=999)
 
         time.sleep(PAUSE_SEC)
         for _ in range(2):
@@ -51,13 +50,13 @@ def main(path, window_name):
         time.sleep(PAUSE_SEC)
         keyboard.press_and_release('enter')
 
-        wait_windows('Результат импорта', time_check_second=999)
+        wait_windows(WINDOW_NAME_RESULT_IMPORT_FROM_EXCEL, time_check_second=999)
         time.sleep(PAUSE_SEC)
         keyboard.press_and_release('enter')
         time.sleep(PAUSE_SEC)
 
         if num != max_num:
-            full_scrin()
+            window_fullscrin()
             time.sleep(0.1)
             click_num(num)
 
@@ -78,4 +77,3 @@ if __name__ == '__main__':
             if main(full_path, name_window):
                 file_path_txt = os.path.join(full_path, INFO_TICKET_IMPORT)
                 subprocess.Popen(["notepad", file_path_txt])
-                # time.sleep(1)

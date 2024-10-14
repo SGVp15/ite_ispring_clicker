@@ -20,6 +20,7 @@ def wait_windows(name_like: str, time_check_second=5):
             pass
         time.sleep(0.1)
         n += 1
+        print(pg.getAllTitles())
         for windows in pg.getAllTitles():
             if re.search(name_like, windows):
                 is_win_activate = True
@@ -33,5 +34,5 @@ def wait_windows(name_like: str, time_check_second=5):
     return False
 
 
-def full_scrin():
+def window_fullscrin():
     keyboard.press_and_release('win + up')
