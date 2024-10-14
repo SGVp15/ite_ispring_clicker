@@ -63,6 +63,7 @@ def run_clicker(path, window_name):
 
     click_property(window_name)
     wait_windows(WINDOW_NAME_PROPERTY, time_check_second=999)
+    time.sleep(PAUSE_SEC * 2)
     pyautogui.click(510, 256)
     time.sleep(PAUSE_SEC * 2)
     for _ in range(3):
