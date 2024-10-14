@@ -30,7 +30,7 @@ def wait_windows(name_like: str, time_check_second=5):
                     continue
                 time.sleep(0.3)
                 return True
-        print(f'Wait windows like [{name_like}]\t\t\t\t', end='\r')
+        print(f'Wait windows like [{name_like}]', end='\r')
     return False
 
 
