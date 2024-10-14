@@ -47,7 +47,9 @@ def run_clicker(path, base_window):
         click_property(base_window)
         keyboard.press_and_release('esc')
         time.sleep(PAUSE_SEC)
-        del_all_group(base_window)
+
+        wait_windows(base_window)
+        del_all_group()
         time.sleep(PAUSE_SEC)
         click_import(file, base_window)
 
