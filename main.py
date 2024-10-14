@@ -1,11 +1,12 @@
 import os.path
 import re
+import subprocess
 import time
 
+import keyboard
 import pyautogui
 import pygetwindow as pg
 import pyperclip
-import subprocess
 
 from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS, ISPRINGQUIZMAKER_PATH
 
@@ -13,14 +14,14 @@ from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS, ISPRINGQUIZM
 def click_ispring_import(file, base_window):
     while True:
         if wait_windows(base_window, time_second=99999):
-            pyautogui.hotkey('alt')
-            pyautogui.hotkey('m')
-            pyautogui.hotkey('j')
+            keyboard.press_and_release('alt')
+            keyboard.press_and_release('m')
+            keyboard.press_and_release('j')
             if wait_windows('Откр', time_second=2):
                 break
-    pyautogui.write(file)
+    keyboard.write(file)
     time.sleep(PAUSE_SEC)
-    pyautogui.hotkey('enter')
+    keyboard.press_and_release('enter')
 
 
 def read_txt_file(path) -> ([], []):
@@ -45,21 +46,21 @@ def read_txt_file(path) -> ([], []):
 
 
 def click_property():
-    pyautogui.hotkey('alt')
-    pyautogui.hotkey('m')
-    pyautogui.hotkey('b')
+    keyboard.press_and_release('alt')
+    keyboard.hotkey('m')
+    keyboard.press_and_release('b')
 
 
 def click_num(num):
     pyautogui.click(1600, 299)
-    pyautogui.hotkey('tab')
+    keyboard.press_and_release('tab')
     des = num // 10
 
-    pyautogui.hotkey(str(des))
-    pyautogui.hotkey(str(des))
+    keyboard.press_and_release(str(des))
+    keyboard.press_and_release(str(des))
 
     for n in range(num % 10):
-        pyautogui.hotkey('down')
+        keyboard.press_and_release('down')
 
 
 def main(path, window_name):
@@ -78,21 +79,22 @@ def main(path, window_name):
             return False
 
         time.sleep(PAUSE_SEC)
-        pyperclip.copy(category)
+        # pyperclip.copy(category)
         for _ in range(2):
-            pyautogui.hotkey('shift', 'tab')
+            keyboard.press_and_release('shift + tab')
             time.sleep(0.1)
-        pyautogui.hotkey('ctrl', 'v')
+        keyboard.write(category)
+        # keyboard.press_and_release('ctrl + v')
         time.sleep(PAUSE_SEC)
 
-        pyautogui.hotkey('enter')
+        keyboard.press_and_release('enter')
         wait_windows('Результат импорта', time_second=999)
         time.sleep(PAUSE_SEC)
-        pyautogui.hotkey('enter')
+        keyboard.press_and_release('enter')
         time.sleep(PAUSE_SEC)
 
         if num != max_num:
-            pyautogui.hotkey('win', 'up')
+            keyboard.press_and_release('win + up')
             time.sleep(0.1)
             click_num(num)
 
@@ -141,27 +143,3 @@ if __name__ == '__main__':
                 file_path_txt = os.path.join(full_path, INFO_TICKET_IMPORT)
                 subprocess.Popen(["notepad", file_path_txt])
                 # time.sleep(1)
-
-# ['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&', "'", '(',
-# ')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7',
-# '8', '9', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`',
-# 'a', 'b', 'c', 'd', 'e','f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
-# 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}', '~',
-# 'accept', 'add', 'alt', 'altleft', 'altright', 'apps', 'backspace',
-# 'browserb
-# ack', 'browserfavorites', 'browserforward', 'browserhome',
-# 'browserrefresh', 'browsersearch', 'browserstop', 'capslock', 'clear',
-# 'convert', 'ctrl', 'ctrlleft', 'ctrlright', 'decimal', 'del', 'delete',
-# 'divide', 'down', 'end', 'enter', 'esc', 'escape', 'execute', 'f1', 'f10',
-# 'f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f2', 'f20',
-# 'f21', 'f22', 'f23', 'f24', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9',
-# 'final', 'fn', 'hanguel', 'hangul', 'hanja', 'help', 'home', 'insert', 'junja',
-# 'kana', 'kanji', 'launchapp1', 'launchapp2', 'launchmail',
-# 'launchmediaselect', 'left', 'modechange', 'multiply', 'nexttrack',
-# 'nonconvert', 'num0', 'num1', 'num2', 'num3', 'num4', 'num5', 'num6',
-# 'num7', 'num8', 'num9', 'numlock', 'pagedown', 'pageup', 'pause', 'pgdn',
-# 'pgup', 'playpause', 'prevtrack', 'print', 'printscreen', 'prntscrn',
-# 'prtsc', 'prtscr', 'return', 'right', 'scrolllock', 'select', 'separator',
-# 'shift', 'shiftleft', 'shiftright', 'sleep', 'space', 'stop', 'subtract', 'tab',
-# 'up', 'volumedown', 'volumemute', 'volumeup', 'win', 'winleft', 'winright', 'yen',
-# 'command', 'option', 'optionleft', 'optionright']
