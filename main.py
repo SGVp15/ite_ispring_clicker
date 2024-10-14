@@ -45,6 +45,7 @@ def run_clicker(path, base_window):
         time.sleep(PAUSE_SEC)
         window_fullscrin()
         click_property(base_window)
+        wait_windows(WINDOW_NAME_PROPERTY)
         keyboard.press_and_release('esc')
         time.sleep(PAUSE_SEC)
 
