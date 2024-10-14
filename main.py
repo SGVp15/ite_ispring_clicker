@@ -40,6 +40,8 @@ def run_clicker(path, window_name):
         file = files[i]
         num = num_list[i]
         max_num = max_num_list[i]
+        wait_windows(window_name)
+        window_fullscrin()
         click_import(file, window_name)
         wait_windows(WINDOW_NAME_IMPORT_FROM_EXCEL, time_check_second=999)
 
@@ -69,11 +71,10 @@ def run_clicker(path, window_name):
     for _ in range(3):
         keyboard.press_and_release('tab')
         time.sleep(PAUSE_SEC * 2)
-    for _ in range(len(categories_list)):
-        keyboard.press_and_release('space')
-        time.sleep(PAUSE_SEC * 2)
-        keyboard.press_and_release('tab')
-        time.sleep(PAUSE_SEC * 2)
+    keyboard.press_and_release('space')
+    time.sleep(PAUSE_SEC * 2)
+    keyboard.press_and_release('tab')
+    time.sleep(PAUSE_SEC * 2)
 
     time.sleep(1)
     pyautogui.click(900, 900)
