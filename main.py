@@ -46,7 +46,7 @@ def read_txt_file(path) -> ([], []):
 
 def click_property():
     keyboard.press_and_release('alt')
-    keyboard.hotkey('m')
+    keyboard.press_and_release('m')
     keyboard.press_and_release('b')
 
 
