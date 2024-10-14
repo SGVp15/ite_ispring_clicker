@@ -6,7 +6,8 @@ import keyboard
 import pyautogui
 
 from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS, ISPRINGQUIZMAKER_PATH, \
-    WINDOW_NAME_IMPORT_FROM_EXCEL, WINDOW_NAME_RESULT_IMPORT_FROM_EXCEL, WINDOW_NAME_PROPERTY, WINDOW_NAME_EXPORT
+    WINDOW_NAME_IMPORT_FROM_EXCEL, WINDOW_NAME_RESULT_IMPORT_FROM_EXCEL, WINDOW_NAME_PROPERTY, WINDOW_NAME_EXPORT, \
+    WINDOW_NAME_OPEN
 from ispring import click_property, click_num, click_import, click_export, del_all_group
 from windows import wait_windows, window_fullscrin
 
@@ -55,7 +56,7 @@ def run_clicker(path, base_window):
         # click_import(file, base_window)
 
         click_import(file, base_window)
-        wait_windows(WINDOW_NAME_IMPORT_FROM_EXCEL, time_check_second=999)
+        wait_windows(WINDOW_NAME_OPEN, time_check_second=999)
 
         time.sleep(PAUSE_SEC)
         for _ in range(2):
