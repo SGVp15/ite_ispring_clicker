@@ -20,7 +20,11 @@ def wait_windows(name_like: str, time_check_second=5):
             pass
         time.sleep(0.1)
         n += 1
-        print(pg.getAllTitles())
+
+        if n % 10 == 0:
+            print(pg.getAllTitles())
+            print(f'Wait windows like [{name_like}]')
+
         for windows in pg.getAllTitles():
             if re.search(name_like, windows):
                 is_win_activate = True
@@ -30,7 +34,7 @@ def wait_windows(name_like: str, time_check_second=5):
                     continue
                 time.sleep(0.3)
                 return True
-        print(f'Wait windows like [{name_like}]', end='\r')
+
     return False
 
 
