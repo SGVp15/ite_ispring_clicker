@@ -109,10 +109,11 @@ def wait_windows(name_like: str, time_second=5):
         if n > max_sec:
             print('Time')
             break
-
-        if re.search(name_like, pg.getActiveWindow().title):
-            return True
-
+        try:
+            if re.search(name_like, pg.getActiveWindow().title):
+                return True
+        except AttributeError:
+            pass
         time.sleep(0.1)
         n += 1
         for windows in pg.getAllTitles():
