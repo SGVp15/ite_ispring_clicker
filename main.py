@@ -7,7 +7,7 @@ import pyautogui
 
 from config import INFO_TICKET_IMPORT, PAUSE_SEC, BASE_PATH, EXAMS, ISPRINGQUIZMAKER_PATH, \
     WINDOW_NAME_IMPORT_FROM_EXCEL, WINDOW_NAME_RESULT_IMPORT_FROM_EXCEL, WINDOW_NAME_PROPERTY, WINDOW_NAME_EXPORT
-from ispring import click_property, click_num, click_import, click_export
+from ispring import click_property, click_num, click_import, click_export, del_all_group
 from windows import wait_windows, window_fullscrin
 
 
@@ -32,7 +32,7 @@ def read_txt_file(path) -> ([], []):
     return categories_list, files, num_list, max_num_list
 
 
-def run_clicker(path, window_name):
+def run_clicker(path, base_window):
     categories_list, files, num_list, max_num_list = read_txt_file(path)
 
     for i, category in enumerate(categories_list):
@@ -41,15 +41,17 @@ def run_clicker(path, window_name):
         num = num_list[i]
         max_num = max_num_list[i]
 
-        wait_windows(window_name)
-        window_fullscrin()
+        wait_windows(base_window)
         time.sleep(PAUSE_SEC)
-        pyautogui.click(150, 340)
-        for _ in range(20):
-            keyboard.press_and_release('del')
-            time.sleep(0.2)
+        window_fullscrin()
+        click_property(base_window)
+        keyboard.press_and_release('esc')
+        time.sleep(PAUSE_SEC)
+        del_all_group(base_window)
+        time.sleep(PAUSE_SEC)
+        click_import(file, base_window)
 
-        click_import(file, window_name)
+        click_import(file, base_window)
         wait_windows(WINDOW_NAME_IMPORT_FROM_EXCEL, time_check_second=999)
 
         time.sleep(PAUSE_SEC)
@@ -70,7 +72,7 @@ def run_clicker(path, window_name):
             time.sleep(0.1)
             click_num(num)
 
-    click_property(window_name)
+    click_property(base_window)
     wait_windows(WINDOW_NAME_PROPERTY, time_check_second=999)
     time.sleep(PAUSE_SEC * 2)
     pyautogui.click(510, 256)
@@ -91,7 +93,7 @@ def run_clicker(path, window_name):
     time.sleep(PAUSE_SEC)
     keyboard.press_and_release('ctrl+s')
     time.sleep(2)
-    click_export(window_name)
+    click_export(base_window)
     return True
 
 
