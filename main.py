@@ -97,7 +97,12 @@ def run_clicker(path, base_window):
     time.sleep(PAUSE_SEC)
     keyboard.press_and_release('ctrl+s')
     time.sleep(2)
+
     click_export(base_window)
+    time.sleep(1)
+    keyboard.press_and_release('shift + tab')
+    keyboard.press_and_release('shift + tab')
+    keyboard.press_and_release('enter')
     return True
 
 
