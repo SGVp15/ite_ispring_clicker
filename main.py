@@ -107,12 +107,6 @@ def run_clicker(path, base_window):
     wait_windows('iSpring Suite', time_check_second=999)
     time.sleep(1)
     pyautogui.click(1130, 635)
-    wait_windows('iSpring QuizMaker', time_check_second=999)
-    time.sleep(1)
-    keyboard.press_and_release('alt + f4')
-    time.sleep(1)
-    keyboard.press_and_release('ctrl+s')
-    time.sleep(1)
     return True
 
 
