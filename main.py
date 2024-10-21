@@ -103,6 +103,7 @@ def run_clicker(path, base_window):
     keyboard.press_and_release('shift + tab')
     keyboard.press_and_release('shift + tab')
     keyboard.press_and_release('enter')
+    keyboard.press_and_release('enter')
     return True
 
 
