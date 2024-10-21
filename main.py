@@ -98,6 +98,8 @@ def run_clicker(path, base_window):
     # keyboard.press_and_release('ctrl+s')
     # time.sleep(1)
 
+
+    # Export to Platform
     click_export(base_window)
     time.sleep(1)
     keyboard.press_and_release('shift + tab')
