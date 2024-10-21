@@ -105,6 +105,7 @@ def run_clicker(path, base_window):
     keyboard.press_and_release('shift + tab')
     keyboard.press_and_release('shift + tab')
     keyboard.press_and_release('enter')
+    wait_windows('iSpring Suite', time_check_second=999)
     keyboard.press_and_release('enter')
     return True
 
