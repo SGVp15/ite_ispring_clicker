@@ -98,7 +98,6 @@ def run_clicker(path, base_window):
     # keyboard.press_and_release('ctrl+s')
     # time.sleep(1)
 
-
     # Export to Platform
     click_export(base_window)
     time.sleep(1)
@@ -108,7 +107,11 @@ def run_clicker(path, base_window):
     wait_windows('iSpring Suite', time_check_second=999)
     time.sleep(1)
     pyautogui.click(1130, 635)
-    wait_windows('iSpring Suite', time_check_second=999)
+    wait_windows('iSpring QuizMaker', time_check_second=999)
+    time.sleep(0.5)
+    keyboard.press_and_release('alt + f4')
+    time.sleep(0.5)
+    keyboard.press_and_release('ctrl+s')
     return True
 
 
